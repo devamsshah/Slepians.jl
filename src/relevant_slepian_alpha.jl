@@ -248,7 +248,7 @@ function phicurve(thph, th)
     colf, colj = (map(c -> Tuple(c)[1], col), map(c -> Tuple(c)[2], col))
     # colr = sub2ind(dsx, colf, colj) 
     colr = LinearIndices(dsx)[col]
-    # This returns the one on the negative side of hte line
+    # This returns the one on the negative side of the line
     # add one to colx if the difference is -2; add one to colx2 if the difference is 2
     colx = colf .+ (dsx[colr] .== -2) # DOT was missing here in parentheses
     colx2 = colf .+ (dsx[colr] .== 2)
@@ -262,8 +262,9 @@ function phicurve(thph, th)
         php = phint
     else
         for ond = 1:L
+            #print("debugger\n")
             # In case you have a node immediately followed by a crossing
-            phint[ond] = (colx[ond] == colx2[ond]) ? NaN : interp1(xmth[hcat(colx[ond], colx2[ond]), colj[ond]][:], thph[hcat(colx[ond], colx2[ond]),2][:], 0, :linear) 
+            phint[ond] = (colx[ond] == colx2[ond]) ? NaN : interp1(xmth[hcat(colx[ond], colx2[ond]), colj[ond]][:], thph[hcat(colx[ond], colx2[ond]),2][:], 0)#, :linear) 
         end
     end
     # If the NaNs are not consecutive pairs, get special case
