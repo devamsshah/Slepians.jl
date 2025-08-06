@@ -13,18 +13,15 @@ spheroidal sequences solve this optimization problem.
 # My Contributions
 
 ## Motivation
-An elegant solution to the Slepian, Landau, and Pollak problem was needed to generate 3D-ΔPDF maps. However, current methods that included the naive "punch and fill" algorithm introduced unintended ripples and noise due to sharp edges during interpolation. The algorithm was also sequential which proved to be a huge bottleneck in the X-Ray analysis which needed to analyze multiple gigabytes of data every second. 
+An elegant solution to the Slepian, Landau, and Pollak problem was needed to generate 3D-ΔPDF maps. However, current methods, especially the naive "punch and fill" algorithm, introduced unintended ripples and noise due to sharp edges during interpolation. The algorithm was sequential. This was a huge bottleneck in our applications of X-Ray analysis because we needed to process multiple gigabytes of data every minute. 
 
 
 ## Significance
-To mitigate the noise and the runtime issues, we propose leveraging the inherent sparsity of the data to our advantage. 
+To mitigate the noise and the runtime issues, I proposed leveraging the inherent sparsity of the data to our advantage. I used functions localized both in their [Fourier transforms](https://nbviewer.org/github/devamsshah/Slepians.jl/blob/master/Examples/00_DPSS.ipynb#Start-the-Quadrature) and the real space to minimize the leakage artifacts in the 3D-ΔPDF maps. Using a sparse representation for the diffuse scattering in the real space, I created interpretable PDFs with minimal noise. I used the Nystrom method and [DPSS](https://nbviewer.org/github/devamsshah/Slepians.jl/blob/master/Examples/00_DPSS.ipynb#Discrete-prolate-spheroidal-sequences) to solve the Fredholm equations
 
-I used functions localized both in their forier transforms and the real space to minimize the leakage artifacts in the 3D-ΔPDF maps. Using a sparse representation for the diffuse scattering in the real space, I created interpretable PDFs with minimal noise. I used the Nystrom method and DPSS  to solve the Fredholm equations
+Solving Fredholm equations using the above methods also restructured the solution to be embarrassingly parallel. This solved the crucial problem relating to [runtime](https://nbviewer.org/github/devamsshah/Slepians.jl/blob/master/Examples/multithreaded_benchmarks.ipynb#Time-taken). 
 
-Solving Fredholm equations using the above methods also restructured the solution to be embarrassingly parallel. This solved the crucial problem relating to runtime. 
-
-These improvements allowed the team to perform enhanced material characterization and improved data quality with broader applicability and optimized computational efficiency. 
-
+These improvements allowed my team to perform enhanced material characterization and improved data quality with broader applicability and optimized computational efficiency. 
 
 
 # Installation
