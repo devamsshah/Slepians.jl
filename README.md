@@ -6,7 +6,7 @@
 <!--Slepians.jl is a package that solves the concentration problem of Slepian, Landau and Pollak, numerically. Loosely speaking, we find a function that is both finite in extent, and has a Fourier transform which lies in a certain domain. In a single dimension, with discrete sampling, the discrete prolate spheroidal sequences solve this optimization problem. -->
 
 # Motivation
-An elegant solution to the Slepian, Landau, and Pollak problem was needed to generate 3D-ΔPDF maps. However, current methods, especially the naive "punch and fill" algorithm, introduced unintended ripples and noise due to sharp edges during interpolation and was not scalable to higher dimensions. Since the algorithm was sequential, it was a huge bottleneck in our applications of X-Ray analysis.  Processing multiple gigabytes of data every minute for our applications was impractical. 
+An elegant solution to the Slepian, Landau, and Pollak problem was needed to generate 3D-ΔPDF maps (also look [here](https://github.com/devamsshah/Slepians.jl/blob/master/Shah-Devam-SIP-DSL.pdf)). However, current methods, especially the naive "punch and fill" algorithm, introduced unintended ripples and noise due to sharp edges during interpolation and was not scalable to higher dimensions. Since the algorithm was sequential, it was a huge bottleneck in our applications of X-Ray analysis.  Processing multiple gigabytes of data every minute for our applications was impractical. 
 
 
 # Significance
