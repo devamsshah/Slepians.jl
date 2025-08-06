@@ -3,14 +3,10 @@
 [![](https://img.shields.io/badge/docs-stable-blue.svg)](https://lootie.github.io/Slepians.jl/dev)
 [![](https://img.shields.io/badge/docs-dev-blue.svg)](https://lootie.github.io/Slepians.jl/dev)
 
-Slepians.jl is a package that solves the concentration problem of Slepian,
-Landau and Pollak, numerically. Loosely speaking, we find a function that is
-both finite in extent, and has a Fourier transform which lies in a certain
-domain. In a single dimension, with discrete sampling, the discrete prolate 
-spheroidal sequences solve this optimization problem. 
+[comment]: Slepians.jl is a package that solves the concentration problem of Slepian, Landau and Pollak, numerically. Loosely speaking, we find a function that is both finite in extent, and has a Fourier transform which lies in a certain domain. In a single dimension, with discrete sampling, the discrete prolate spheroidal sequences solve this optimization problem. 
 
 ## Motivation
-An elegant solution to the Slepian, Landau, and Pollak problem was needed to generate 3D-ΔPDF maps. However, current methods, especially the naive "punch and fill" algorithm, introduced unintended ripples and noise due to sharp edges during interpolation. The algorithm was sequential. This was a huge bottleneck in our applications of X-Ray analysis because we needed to process multiple gigabytes of data every minute. 
+An elegant solution to the Slepian, Landau, and Pollak problem was needed to generate 3D-ΔPDF maps. However, current methods, especially the naive "punch and fill" algorithm, introduced unintended ripples and noise due to sharp edges during interpolation and was not scalable to higher dimensions. Since the algorithm was sequential, it was a huge bottleneck in our applications of X-Ray analysis.  Processing multiple gigabytes of data every minute for our applications was impractical. 
 
 
 ## Significance
@@ -19,7 +15,6 @@ To mitigate the noise and the runtime issues, I proposed leveraging the inherent
 Solving Fredholm equations using the above methods also restructured the solution to be embarrassingly parallel. This solved the crucial problem relating to [runtime](https://nbviewer.org/github/devamsshah/Slepians.jl/blob/master/Examples/multithreaded_benchmarks.ipynb#Time-taken). The benchmark for these is available [here](https://nbviewer.org/github/devamsshah/Slepians.jl/blob/master/Examples/multithreaded_benchmarks.ipynb#Benchmarking-the-two-methods)
 
 These improvements allowed my team to perform enhanced material characterization and improved data quality with broader applicability and optimized computational efficiency. 
-
 
 # Installation
 
@@ -87,3 +82,5 @@ Please see the below papers
   publisher={Springer}
 }
 ```
+
+NOTE: Some of these files have been forked from my mentor Dr. Charlotte Haley [@lootie](https://github.com/lootie/Slepians.jl/tree/master), who at the time of editing this is affiliated with Argonne National Laboratory. She had been working on this problem before I joined ANL as an intern. I thank her immensely for her mentorship and guidance and for introducing me to the beautiful world of spectral analysis. The files linked to in this modified README.md are either solely or majorly my contributions to the [AXMAS](https://cels.anl.gov/axmas/research/spectral-analysis/) group. 
