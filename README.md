@@ -9,9 +9,6 @@ both finite in extent, and has a Fourier transform which lies in a certain
 domain. In a single dimension, with discrete sampling, the discrete prolate 
 spheroidal sequences solve this optimization problem. 
 
-
-# My Contributions
-
 ## Motivation
 An elegant solution to the Slepian, Landau, and Pollak problem was needed to generate 3D-ΔPDF maps. However, current methods, especially the naive "punch and fill" algorithm, introduced unintended ripples and noise due to sharp edges during interpolation. The algorithm was sequential. This was a huge bottleneck in our applications of X-Ray analysis because we needed to process multiple gigabytes of data every minute. 
 
